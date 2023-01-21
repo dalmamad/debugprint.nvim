@@ -100,7 +100,8 @@ local debuginfo = function(opts)
         line = line .. ": " .. opts.variable_name .. "="
     end
 
-    return line
+  -- return line
+    return ''
 end
 
 local filetype_configured = function()
@@ -129,7 +130,8 @@ end
 local indent_line = function(current_line)
     local pos = vim.api.nvim_win_get_cursor(0)
     -- There's probably a better way to do this indent, but I don't know what it is
-    vim.cmd(current_line + 1 .. "normal! ==")
+    vim.cmd(current_line + 1 .. "normal! ==f'2x")
+    vim.cmd("star")
 
     if not global_opts.move_to_debugline then
         vim.api.nvim_win_set_cursor(0, pos)
